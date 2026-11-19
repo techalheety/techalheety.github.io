@@ -56,7 +56,8 @@
   .small { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
   section.box { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; margin: 0 auto 22px; }
   h2 { margin: 0 0 10px; font-size: 19px; color: var(--brown); }
-  h2 .en-inline { font-weight: 500; color: var(--muted); font-size: .85em; }
+  h2 .en-inline { display: block; font-weight: 500; color: var(--muted); font-size: .8em; }
+  .q { direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
   ol.steps { margin: 0; padding-inline-start: 0; list-style: none; counter-reset: s; }
   ol.steps li { counter-increment: s; position: relative; padding-inline-start: 40px; margin: 10px 0; }
   ol.steps li::before {
@@ -98,17 +99,18 @@
       <span>تحميل البرنامج / Download</span>
     </a>
     <div class="meta">
-      <span class="chip">الإصدار / Version <b id="ver">…</b></span>
+      <span class="chip">الإصدار <b id="ver">…</b> Version</span>
       <span class="chip">Windows 10 / 11 (64-bit)</span>
     </div>
-    <p class="small">مجاني للتجربة، والتحديثات تصل تلقائياً داخل البرنامج. · Free demo; updates arrive automatically inside the app.</p>
+    <p class="small">مجاني للتجربة، والتحديثات تصل تلقائياً داخل البرنامج.</p>
+    <p class="small" dir="ltr">Free demo; updates arrive automatically inside the app.</p>
   </div>
 
   <section class="box" aria-labelledby="warn-h">
-    <h2 id="warn-h">إذا ظهر تحذير من ويندوز أو المتصفح <span class="en-inline">/ If Windows or the browser warns you</span></h2>
+    <h2 id="warn-h">إذا ظهر تحذير من ويندوز أو المتصفح <span class="en-inline" dir="ltr">If Windows or the browser warns you</span></h2>
     <ol class="steps">
       <li>في المتصفح (Edge / Chrome): اضغط على النقاط الثلاث بجانب الملف ثم <span class="kbd">Keep</span> (الاحتفاظ).</li>
-      <li>شغّل الملف. إذا ظهرت نافذة زرقاء "Windows protected your PC" اضغط <span class="kbd">More info</span> (مزيد من المعلومات).</li>
+      <li>شغّل الملف. إذا ظهرت نافذة زرقاء <span class="q">"Windows protected your PC"</span> اضغط <span class="kbd">More info</span> (مزيد من المعلومات).</li>
       <li>ثم اضغط <span class="kbd">Run anyway</span> (التشغيل على أي حال) وأكمل التثبيت.</li>
     </ol>
     <p class="small">يظهر هذا التحذير لأن البرنامج جديد وغير منتشر بعد، وهو آمن ومن المصدر الرسمي.</p>
@@ -123,7 +125,7 @@
   </section>
 
   <section class="box" aria-labelledby="soc-h">
-    <h2 id="soc-h">تابعنا وتواصل معنا <span class="en-inline">/ Follow and contact us</span></h2>
+    <h2 id="soc-h">تابعنا وتواصل معنا <span class="en-inline" dir="ltr">Follow and contact us</span></h2>
     <div class="social">
       <a class="soc yt" href="https://www.youtube.com/@a_r_94" target="_blank" rel="noopener">
         <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8z"/><path fill="#e62117" d="M9.8 15.1V8.9l5.4 3.1z"/></svg>YouTube</a>

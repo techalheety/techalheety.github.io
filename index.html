@@ -240,7 +240,7 @@
   // (ControlCircuitSimulator_X.Y.Z_x64-setup.exe), all releases. Update checks (latest.json) and .sig are not counted.
   (function () {
     var el = document.getElementById("dl-count");
-    var isInstaller = function (n) { return n === "ControlCircuitSimulator-Setup.exe" || /^ControlCircuitSimulator_d+.d+.d+_x64-setup.exe$/.test(n); };
+    var isInstaller = function (n) { return n === "ControlCircuitSimulator-Setup.exe" || /^ControlCircuitSimulator_\d+\.\d+\.\d+_x64-setup\.exe$/.test(n); };
     fetch("https://api.github.com/repos/techalheety/circuit-simulator-updates/releases?per_page=100", { headers: { Accept: "application/vnd.github+json" } })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (rels) {

@@ -76,8 +76,7 @@
   .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .downloads { margin: 10px auto 0; display: flex; width: max-content; max-width: 100%; height: 26px; border-radius: 999px; overflow: hidden; border: 1px solid #dfe9b8; }
   .downloads .dl-label { display: flex; align-items: center; padding: 0 12px; background: var(--brown); color: #f5efe9; font-size: 13px; font-weight: 600; white-space: nowrap; }
-  .downloads .dl-num { display: flex; align-items: center; padding: 0 6px; background: #C8E06A; }
-  .downloads img { display: block; height: 20px; }
+  .downloads .dl-num { display: flex; align-items: center; padding: 0 12px; background: var(--green); color: var(--brown); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; direction: ltr; min-width: 36px; justify-content: center; }
   .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 999px; background: var(--green-tint); border: 1px solid #dfe9b8; font-size: 14px; color: #3f4a1a; }
   .chip b { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
   .small { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
@@ -131,7 +130,7 @@
       <span class="chip"><span data-t="version">الإصدار</span> <b id="ver">…</b></span>
       <span class="chip" data-t="windows">ويندوز 10 / 11 (64 بت)</span>
     </div>
-    <div class="downloads"><span class="dl-label" data-t="downloads">عدد التحميلات</span><span class="dl-num"><img id="dl-count" alt="" height="20" src="https://img.shields.io/github/downloads/techalheety/circuit-simulator-updates/total?style=flat-square&amp;label=&amp;color=C8E06A&amp;cacheSeconds=3600"></span></div>
+    <div class="downloads"><span class="dl-label" data-t="downloads">عدد التحميلات</span><span class="dl-num" id="dl-count">…</span></div>
     <p class="small" data-t="free">مجاني للتجربة، والتحديثات تصل تلقائياً داخل البرنامج.</p>
   </div>
 
@@ -236,6 +235,21 @@
     try { localStorage.setItem("ccs-lang", lang); } catch (err) {}
     applyLang(lang);
   });
+
+  // Installer downloads only: manual (ControlCircuitSimulator-Setup.exe) + in-app updates
+  // (ControlCircuitSimulator_X.Y.Z_x64-setup.exe), all releases. Update checks (latest.json) and .sig are not counted.
+  (function () {
+    var el = document.getElementById("dl-count");
+    var isInstaller = function (n) { return n === "ControlCircuitSimulator-Setup.exe" || /^ControlCircuitSimulator_d+.d+.d+_x64-setup.exe$/.test(n); };
+    fetch("https://api.github.com/repos/techalheety/circuit-simulator-updates/releases?per_page=100", { headers: { Accept: "application/vnd.github+json" } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (rels) {
+        var total = 0;
+        rels.forEach(function (rel) { (rel.assets || []).forEach(function (a) { if (isInstaller(a.name)) total += a.download_count || 0; }); });
+        el.textContent = total.toLocaleString("en-US");
+      })
+      .catch(function () { el.textContent = "—"; });
+  })();
 
   // Latest version from the GitHub API (latest.json itself has no CORS headers for browsers).
   (function () {

@@ -74,6 +74,8 @@
   .dl:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--green-dark); }
   .dl svg { flex: none; }
   .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .downloads { margin-top: 10px; display: flex; justify-content: center; min-height: 24px; }
+  .downloads img { display: block; height: 24px; border-radius: 999px; overflow: hidden; box-shadow: 0 0 0 1px #dfe9b8; }
   .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 999px; background: var(--green-tint); border: 1px solid #dfe9b8; font-size: 14px; color: #3f4a1a; }
   .chip b { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
   .small { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
@@ -127,6 +129,7 @@
       <span class="chip"><span data-t="version">الإصدار</span> <b id="ver">…</b></span>
       <span class="chip" data-t="windows">ويندوز 10 / 11 (64 بت)</span>
     </div>
+    <div class="downloads"><img id="dl-count" alt="عدد التحميلات" height="24" src="https://img.shields.io/github/downloads/techalheety/circuit-simulator-updates/total?style=for-the-badge&amp;label=%D8%B9%D8%AF%D8%AF%20%D8%A7%D9%84%D8%AA%D8%AD%D9%85%D9%8A%D9%84%D8%A7%D8%AA&amp;labelColor=45332D&amp;color=C8E06A&amp;cacheSeconds=3600"></div>
     <p class="small" data-t="free">مجاني للتجربة، والتحديثات تصل تلقائياً داخل البرنامج.</p>
   </div>
 
@@ -172,6 +175,7 @@
       lead: "ارسم دوائر السيطرة الكهربائية وشغّلها مباشرة على الحاسوب: مفاتيح تشغيل وإطفاء، كونتاكتورات، مؤقتات، أوفرلود، لمبات، محركات و PLC. من قناة تقنيات الهيتي.",
       download: "تحميل البرنامج",
       version: "الإصدار",
+      downloads: "عدد التحميلات",
       windows: "ويندوز 10 / 11 (64 بت)",
       free: "مجاني للتجربة، والتحديثات تصل تلقائياً داخل البرنامج.",
       warnTitle: "إذا ظهر تحذير من ويندوز أو المتصفح",
@@ -191,6 +195,7 @@
       lead: "Draw electrical control circuits and run them live on your PC: pushbuttons, contactors, timers, overloads, lamps, motors and a PLC. From the Taqniyat Al-Hiti channel.",
       download: "Download",
       version: "Version",
+      downloads: "Downloads",
       windows: "Windows 10 / 11 (64-bit)",
       free: "Free demo; updates arrive automatically inside the app.",
       warnTitle: "If Windows or the browser warns you",
@@ -211,6 +216,10 @@
     document.title = t.title;
     document.querySelector('meta[name="description"]').setAttribute("content", t.description);
     document.querySelector(".logo").alt = t.logoAlt;
+    var badge = document.getElementById("dl-count");
+    badge.alt = t.downloads;
+    badge.src = "https://img.shields.io/github/downloads/techalheety/circuit-simulator-updates/total?style=for-the-badge" +
+      "&label=" + encodeURIComponent(t.downloads) + "&labelColor=45332D&color=C8E06A&cacheSeconds=3600";
     var nodes = document.querySelectorAll("[data-t]");
     for (var i = 0; i < nodes.length; i++) {
       var key = nodes[i].getAttribute("data-t");

@@ -43,7 +43,7 @@
     font: 16px/1.7 "Segoe UI", Tahoma, "Noto Kufi Arabic", system-ui, sans-serif;
   }
   a { color: inherit; }
-  .hero { position: relative; background: var(--brown); color: #f5efe9; padding: 48px 16px 56px; text-align: center; }
+  .hero { position: relative; background: var(--brown); color: #f5efe9; padding: 48px 16px 40px; text-align: center; }
   .lang-switch {
     position: absolute; top: 12px; inset-inline-end: 12px; display: inline-flex; padding: 2px; gap: 2px;
     border-radius: 999px; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.18);
@@ -61,7 +61,7 @@
   .lead { max-width: 560px; margin: 14px auto 0; color: #e8ddd4; }
   .card {
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(69,51,45,.10); padding: 26px 22px; margin: -32px auto 22px; text-align: center;
+    box-shadow: 0 10px 30px rgba(69,51,45,.10); padding: 26px 22px; margin: 24px auto 22px; text-align: center;
   }
   .dl {
     display: inline-flex; align-items: center; justify-content: center; gap: 12px;
@@ -99,7 +99,8 @@
   .num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
   footer { text-align: center; color: var(--muted); font-size: 13px; padding: 10px 16px 32px; }
   @media (max-width: 480px) {
-    .hero { padding: 54px 16px 50px; }
+    .hero { padding: 54px 16px 34px; }
+    .card { margin-top: 18px; }
     .card, section.box { padding: 18px 16px; border-radius: 14px; }
     .logo { width: 92px; height: 92px; }
   }
